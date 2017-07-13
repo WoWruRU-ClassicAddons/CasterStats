@@ -1,5 +1,4 @@
 if GetLocale() == "enUS" then
------------------------ ENGLISH ------------------------------
 
 	--Feedback information
 	CS_STAT = "caster stat"
@@ -22,11 +21,8 @@ if GetLocale() == "enUS" then
 		SPELLTOHIT = "Chance to Hit with Spells",
 		HEALTHREG = "Health Regen",
 		MANAREG = "Mana Regen",
-		SPELLPEN 	= "Spell Penetration",
+		SPELLPEN = "Spell Penetration"
 	}
-
-	--Additions to the Bonusscanner scans
-	--CS_BONUSSCANNER_ADD_NEGRES = { pattern = "Decreases the magical resistances of your spell targets by (%d+)%.", effect = "NEGRES" },
 
 elseif GetLocale() == "ruRU" then
 
@@ -51,13 +47,10 @@ elseif GetLocale() == "ruRU" then
 		SPELLTOHIT = "Шанс попадания заклинаниями",
 		HEALTHREG = "Восстановление здоровья",
 		MANAREG = "Восполнение маны",
-		SPELLPEN = "Target Resist Decrease" --English
+		SPELLPEN = "Проникновение заклинаний"
 	}
 
-	--Additions to the Bonusscanner scans -- DISABLED - REQUIRES TRANSLATION
-	--CS_BONUSSCANNER_ADD_NEGRES = { pattern = "Снижает сопротивление магии у целей ваших заклинаний на (%d+).", effect = "NEGRES" },
-
-elseif GetLocale() == "deDE" then
+	elseif GetLocale() == "deDE" then
 	--Thx to all who worked on this
 	--German by Ani, corrected by Natu, corrected and 1.9 modified by Kilworth, corrected by DeviL, corrected by herzausgold, reformatted by RMS
 
@@ -82,7 +75,7 @@ elseif GetLocale() == "deDE" then
 		SPELLTOHIT = "Chance mit Zaubern zu treffen",
 		HEALTHREG = "Gesundheitsregenaration",
 		MANAREG = "Mana Regeneration",	
-		NEGRES = "Target Resist Decrease" --English
+		SPELLPEN = "Zauberdurchschlag"
 	}
 
 elseif GetLocale() == "frFR" then
@@ -110,10 +103,7 @@ elseif GetLocale() == "frFR" then
 		SPELLTOHIT = "Chances de toucher avec les sorts",
 		HEALTHGEN = "R\195\169generation Vie",
 		MANAGEN = "R\195\169generation Mana",
-		NEGRES = "Target Resist Decrease" --English
+		SPELLPEN = "Pénétration de sorts"
 	}
-	
-	--Additions to the Bonusscanner scans
-	--CS_BONUSSCANNER_ADD_NEGRES = { pattern = "Decreases the magical resistances of your spell targets by (%d+)%.", effect = "NEGRES" },
 
 end

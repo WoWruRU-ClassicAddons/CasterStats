@@ -1,0 +1,50 @@
+Adds a line to the stat section of the character frame below armor. This line can be
+set to either show your total "+Spell Damage" or "+Healing" via the command line. 
+Like the other stats in the character screen it provides more information when you 
+mouse over it. The tooltip will display the totals for plus healing, spell damage, 
+all individual schools of damage, spell crit, spell to hit, mana regen etc...
+
+The information that is displayed is only additional stats provided by your gear. 
+If you do not have any of the the listed stats it will not be visible. Caster Stats 
+does not currently calculate crit, or mana regen from stats like int, spirit, or 
+base crit. It is only mean't to be a quick way of finding the bonuses you are 
+getting from your gear. I may implement more features in the future however.
+
+While there are other mods out there that can total these stats for you, I wanted 
+something that was more intune with the melee character stats. Something simple 
+yet informative.
+
+-Config
+"/cstats" - Slash command for Caster Stats
+"/cstats [damagetype]" - Allows you to choose the stat visible in the character screen. "damage" or "healing". 
+
+-------------------------------------------------------------------------------------
+v0.9.5.1
+-- Now totals +damage to individual schools of magic as before
+
+v0.9.5
+-- Updated for 1.10
+-- Now uses Bonus Scanner (http://www.curse-gaming.com/mod.php?addid=2384) to find bonuses instead of reinventing the wheel each patch/new item stat with my own scanner. This also allows prevents FR DE localizations from needing to be created multiple times. Bonusscanner is included in the download.
+-- Added detection for negative spell resist to target (not yet implemented by Bonus Scanner)
+-- Relocated the stats to be inside the frame with other stats
+-- As before Caster Stats is not visible if you are a Warrior/Rogue, but now in addition healing does not show if you are not a healing class
+-- Added FE DE localization. Please report if they are functional as I reformatted previous submissions. Will need modified version for both for the negative resists either way.
+
+v0.9.4
+-- Updated for 1.9
+-- Change the comand line to /cstats to be compatible with "Combat Stats"
+-- Mana regen now works again as wording was changed in 1.9
+-- Wizard and Brilliant Oils are now detected
+
+v0.9.3
+-- Sets are now correctly identified and set bonuses only counted once.
+-- Now also totals health regeneration.
+-- Added the Winter's Might enchant.
+
+v0.9.2
+-- Updated mana regen and spell crit detection.
+
+v0.9.1
+-- Now detects TankPoints and moves CasterStats to a new location if needed.
+-- Fixed issues with +spell crit and +spell hit not showing under certain conditions.
+-- Fixed issues where values weren't getting reset on rescan.
