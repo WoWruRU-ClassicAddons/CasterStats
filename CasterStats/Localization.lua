@@ -28,6 +28,35 @@ if GetLocale() == "enUS" then
 	--Additions to the Bonusscanner scans
 	--CS_BONUSSCANNER_ADD_NEGRES = { pattern = "Decreases the magical resistances of your spell targets by (%d+)%.", effect = "NEGRES" },
 
+elseif GetLocale() == "ruRU" then
+
+	--Feedback information
+	CS_STAT = "параметры заклинателя"
+	CS_DMG_TOGGLE = "урон"
+	CS_HEALING_TOGGLE = "исцеление"
+	CS_FEEDBACK_STATCHANGE = "CS - Основной параметр установлен на "
+
+	--Stat names
+	CS_STAT_NAMES = {
+		HEAL = "Исцеление",
+		DMG = "Урон от закл",
+		ARCANEDMG = "Урон от тайной магии",
+		FIREDMG = "Урон от магии огня",
+		FROSTDMG = "Урон от магии льда",
+		HOLYDMG = "Урон от магии Света",
+		NATUREDMG = "Урон от природы",
+		SHADOWDMG = "Урон от темной магии",
+		SPELLCRIT = "Критический удар заклинанием",
+		HOLYCRIT = "Крит. светом",
+		SPELLTOHIT = "Шанс попадания заклинаниями",
+		HEALTHREG = "Восстановление здоровья",
+		MANAREG = "Восполнение маны",
+		SPELLPEN = "Target Resist Decrease" --English
+	}
+
+	--Additions to the Bonusscanner scans -- DISABLED - REQUIRES TRANSLATION
+	--CS_BONUSSCANNER_ADD_NEGRES = { pattern = "Снижает сопротивление магии у целей ваших заклинаний на (%d+).", effect = "NEGRES" },
+
 elseif GetLocale() == "deDE" then
 	--Thx to all who worked on this
 	--German by Ani, corrected by Natu, corrected and 1.9 modified by Kilworth, corrected by DeviL, corrected by herzausgold, reformatted by RMS

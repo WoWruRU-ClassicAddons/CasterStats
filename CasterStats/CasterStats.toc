@@ -1,6 +1,7 @@
 ## Interface: 11000
 ## Title: Caster Stats
 ## Notes: Adds information about stats relevant to casters to the character screen.
+## Notes-ruRU: Добавляет информацию о параметрах относящихся к заклинателю на экран параметров персонажа.
 ## Author: wow@rmsrules.com Bleeding Hollow
 ## Dependencies: BonusScanner
 ## SavedVariablesPerCharacter: reportThis
