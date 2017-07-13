@@ -17,10 +17,10 @@ local casterStats = {
 		'SHADOWDMG',	-- shadow spell damage
 		'SPELLCRIT',	-- chance to crit with spells
 		'HOLYCRIT',		-- chance to crit with holy spells
-		'HEALTHREG',	-- health regeneration per 5 sec.
-		'MANAREG',		-- mana regeneration per 5 sec.
 		'SPELLTOHIT',	-- spell chance to hit
-		'SPELLPEN'		-- spell penetration
+		'SPELLPEN',		-- spell penetration
+		'HEALTHREG',	-- health regeneration per 5 sec.
+		'MANAREG'		-- mana regeneration per 5 sec.
 	}
 }
 
@@ -74,7 +74,7 @@ function CSFrame_OnEnter()
 					GameTooltip:AddDoubleLine(CS_STAT_NAMES[type]..":", "+"..casterStats.stats[type], NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b, 0, 1, 0)
 					-- Check for REGEN TYPE.
 				elseif string.find(type, "REG") then
-					GameTooltip:AddDoubleLine(CS_STAT_NAMES[type]..":", casterStats.stats[type].."/5s", NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b, 0, 1, 0)
+					GameTooltip:AddDoubleLine(CS_STAT_NAMES[type]..":", casterStats.stats[type].."/5 "..CS_SEC, NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b, 0, 1, 0)
 					-- Check for CRIT/HIT TYPE.
 				elseif string.find(type, "CRIT") or string.find(type, "HIT") then
 					GameTooltip:AddDoubleLine(CS_STAT_NAMES[type]..":", "+"..casterStats.stats[type].."%", NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b, 0, 1, 0)
@@ -111,7 +111,7 @@ function SetFrameValues()
 		label:SetText(CS_STAT_NAMES['HEAL']..":")
 		text:SetText("+"..casterStats.stats['HEAL'])
 	else
-		label:SetText(CS_STAT_NAMES['DMG']..":")
+		label:SetText(CS_STAT_NAMES['MAGIC']..":")
 		text:SetText("+"..casterStats.stats['DMG'])
 	end
 end
