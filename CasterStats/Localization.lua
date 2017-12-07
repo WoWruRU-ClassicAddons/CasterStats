@@ -1,32 +1,40 @@
-if GetLocale() == "enUS" then
+CS_LOADED_MSG = "Caster Stats loaded. Type /cstats to change primary stat"
 
-	--Feedback information
-	CS_SEC = "s"
+CS_SEC = "s"
+--Feedback information
+CS_DMG = "damage"
+CS_HEALING = "healing"
+CS_FEEDBACK_STATCHANGE = "CS - Primary stat set to"
 
-	--Stat names
-	CS_STAT_NAMES = {
-		HEAL = "Healing",
-		MAGIC = "Magic",
-		DMG = "Spell Dmg",
-		ARCANEDMG = "Arcane Damage",
-		FIREDMG = "Fire Damage",
-		FROSTDMG = "Frost Damage",
-		HOLYDMG = "Holy Damage",
-		NATUREDMG = "Nature Damage",
-		SHADOWDMG = "Shadow Damage",
-		SPELLCRIT = "Spell Critical",
-		HOLYCRIT = "Holy Critical",
-		SPELLTOHIT = "Chance to Hit with Spells",
-		HEALTHREG = "Health Regen",
-		MANAREG = "Mana Regen",
-		SPELLPEN = "Spell Penetration"
-	}
+--Stat names
+CS_STAT_NAMES = {
+	HEAL = "Healing",
+	MAGIC = "Magic",
+	DMG = "Spell Dmg",
+	ARCANEDMG = "Arcane Damage",
+	FIREDMG = "Fire Damage",
+	FROSTDMG = "Frost Damage",
+	HOLYDMG = "Holy Damage",
+	NATUREDMG = "Nature Damage",
+	SHADOWDMG = "Shadow Damage",
+	SPELLCRIT = "Spell Critical",
+	HOLYCRIT = "Holy Critical",
+	SPELLTOHIT = "Chance to Hit with Spells",
+	HEALTHREG = "Health Regen",
+	MANAREG = "Mana Regen",
+	SPELLPEN = "Spell Penetration"
+}
 
-elseif GetLocale() == "ruRU" then
+if GetLocale() == "ruRU" then
+	
+	CS_LOADED_MSG = "Caster Stats загружен. Введите /cstats для изменения основной характеристики"
 
-	--Feedback information
 	CS_SEC = "сек."
-
+	--Feedback information
+	CS_DMG = "урон"
+	CS_HEALING = "исцеление"
+	CS_FEEDBACK_STATCHANGE = "CS - Основная характеристика установлена на"
+	
 	--Stat names
 	CS_STAT_NAMES = {
 		HEAL = "Исцеление",
@@ -45,13 +53,16 @@ elseif GetLocale() == "ruRU" then
 		MANAREG = "Восполнение маны",
 		SPELLPEN = "Проникновение заклинаний"
 	}
-
+	
 elseif GetLocale() == "deDE" then
 	--Thx to all who worked on this
 	--German by Ani, corrected by Natu, corrected and 1.9 modified by Kilworth, corrected by DeviL, corrected by herzausgold, reformatted by RMS
-
-	--Feedback information
+	
 	CS_SEC = "s"
+	--Feedback information
+	CS_DMG_TOGGLE = "schaden"
+	CS_HEALING_TOGGLE = "heilung"
+	CS_FEEDBACK_STATCHANGE = "CS - Neue einstellung:"
 
 	--Stat names
 	CS_STAT_NAMES = {
@@ -71,13 +82,16 @@ elseif GetLocale() == "deDE" then
 		MANAREG = "Mana Regeneration",	
 		SPELLPEN = "Zauberdurchschlag"
 	}
-
+	
 elseif GetLocale() == "frFR" then
 	--Thx nuru. I hope this is still good.
-
-	--Feedback information
+	
 	CS_SEC = "s"
-
+	--Feedback information
+	CS_DMG_TOGGLE = "Degats"
+	CS_HEALING_TOGGLE = "Soins"
+	CS_FEEDBACK_STATCHANGE = "CS - Primary stat set to"
+	
 	--Stat names
 	CS_STAT_NAMES = {
 		HEAL = "Soin",
@@ -96,5 +110,5 @@ elseif GetLocale() == "frFR" then
 		MANAGEN = "R\195\169generation Mana",
 		SPELLPEN = "Pénétration de sorts"
 	}
-
+	
 end

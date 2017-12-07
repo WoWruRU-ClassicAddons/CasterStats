@@ -2,8 +2,9 @@
 -- Caster Stats v0.9.5.1 by RMS 
 ---------------------------------------------------
 
-reportThis = 0
-
+local _G = getfenv()
+local _, class = UnitClass("player")
+local reportThis = 0
 local casterStats = {
 	stats = {},
 	statTypes = {
@@ -27,18 +28,14 @@ local casterStats = {
 function CS_OnLoad()
 	-- Register the command prompt command
 	SLASH_CSTATS1 = "/cstats"	
+	SLASH_CSTATS2 = "/cs"	
 	SlashCmdList["CSTATS"] = CS_CommandHandler
-	
-	-- Hook the Bonus Scanner function
-	BonusScanner_Update = UpdateCS
+	DEFAULT_CHAT_FRAME:AddMessage(CS_LOADED_MSG)
 end
 
 
 -- Rescan the inventory
 function UpdateCS() 
-	local class
-	_, class = UnitClass("player")
-	
 	-- Only update if the Character Frame is visible to the user
 	if CharacterFrame:IsVisible() and class ~= "ROGUE" and class ~= "WARRIOR" then
 		-- Reacquire the stats information
@@ -57,9 +54,6 @@ end
 
 -- Setup and show the tooltip on mouse over
 function CSFrame_OnEnter()
-	local class
-	_, class = UnitClass("player")
-	
 	if class ~= "ROGUE" and class ~= "WARRIOR" then
 		GameTooltip:SetOwner(this, "ANCHOR_RIGHT")
 		GameTooltip:SetText("Caster Stats", 1, 1, 1)
@@ -78,20 +72,17 @@ function CSFrame_OnEnter()
 					-- Check for CRIT/HIT TYPE.
 				elseif string.find(type, "CRIT") or string.find(type, "HIT") then
 					GameTooltip:AddDoubleLine(CS_STAT_NAMES[type]..":", "+"..casterStats.stats[type].."%", NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b, 0, 1, 0)
-					-- No special output
-				else
 					-- Check if it is the healing stat and only display it if it is a healing class
-					if string.find(type, "HEAL") then
-						if class == "DRUID" or class == "PRIEST" or class == "PALADIN" or class == "SHAMAN" then
-							GameTooltip:AddDoubleLine(CS_STAT_NAMES[type]..":", "+"..casterStats.stats[type], NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b, 0, 1, 0)
-						end
-					else
+				elseif string.find(type, "HEAL") then
+					if class == "DRUID" or class == "PRIEST" or class == "PALADIN" or class == "SHAMAN" then
 						GameTooltip:AddDoubleLine(CS_STAT_NAMES[type]..":", "+"..casterStats.stats[type], NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b, 0, 1, 0)
 					end
+					-- No special output
+				else
+					GameTooltip:AddDoubleLine(CS_STAT_NAMES[type]..":", "+"..casterStats.stats[type], NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b, 0, 1, 0)
 				end
 			end
 		end
-		
 		GameTooltip:Show()
 	end
 end
@@ -99,31 +90,25 @@ end
 
 -- Populate the frame
 function SetFrameValues()
-	local unit = "player"
-	local label = getglobal("CSFrameLabel")
-	local text = getglobal("CSFrameStatText")
-	text:SetTextColor(0, 1, 0, 1)
+	_G["CSFrameStatText"]:SetTextColor(0, 1, 0, 1)
 	
 	CharacterAttributesFrame:SetPoint("TOPLEFT", "PaperDollFrame", "TOPLEFT", 67, -279)
 	PlayerStatBackgroundMiddle:SetHeight(65)
 	
 	if reportThis == 1 then
-		label:SetText(CS_STAT_NAMES['HEAL']..":")
-		text:SetText("+"..casterStats.stats['HEAL'])
+		_G["CSFrameLabel"]:SetText(CS_STAT_NAMES['HEAL']..":")
+		_G["CSFrameStatText"]:SetText("+"..casterStats.stats['HEAL'])
 	else
-		label:SetText(CS_STAT_NAMES['MAGIC']..":")
-		text:SetText("+"..casterStats.stats['DMG'])
+		_G["CSFrameLabel"]:SetText(CS_STAT_NAMES['MAGIC']..":")
+		_G["CSFrameStatText"]:SetText("+"..casterStats.stats['DMG'])
 	end
 end
 
 
 -- Empty the frame
-function ClearFrameValues()
-	local label = getglobal("CSFrameLabel")
-	local text = getglobal("CSFrameStatText")
-	
-	label:SetText("")
-	text:SetText("")
+function ClearFrameValues()	
+	_G["CSFrameLabel"]:SetText("")
+	_G["CSFrameStatText"]:SetText("")
 end
 
 
@@ -139,19 +124,12 @@ end
 
 -- Handles the command line
 function CS_CommandHandler(msg)
-	if msg == CS_DMG_TOGGLE then
-		reportThis = 0
-		UpdateCS()
-		DEFAULT_CHAT_FRAME:AddMessage(CS_FEEDBACK_STATCHANGE.." \""..CS_DMG_TOGGLE.."\"")
-	elseif msg == CS_HEALING_TOGGLE then
-		reportThis = 1
-		UpdateCS()
-		DEFAULT_CHAT_FRAME:AddMessage(CS_FEEDBACK_STATCHANGE.." \""..CS_HEALING_TOGGLE.."\"")
-	else
-		if(reportThis == 0) then
+if msg == "" or msg == nil then
+		if reportThis == 0 then
 			reportThis = 1
 		else
 			reportThis = 0
 		end	
+		UpdateCS()
 	end
 end
